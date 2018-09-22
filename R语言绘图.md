@@ -54,5 +54,64 @@
 * barplot()
 * boxplot()
 
-##### Low Functions
+##### Low Functions 
 
+> 不可去名上理会。须求其所以然。  ——《朱子语类》
+
+在开始的开始，先弄一个*高端*函数来做参考
+
+```R
+> x=c(1,2,3,4,5,6)		#简单的点，下同
+> y=c(1,2,3,4,5,6)
+> plot(x,y)				#简单的图
+```
+
+
+
+* points()
+
+  不要信什么**晦涩难懂的教程**，x,y根本就不是横纵坐标的意思。这里把x,y看成点
+
+  ```R
+  > points(x,y=5,3)	#我们一起学猪叫
+  Error in xy.coords(x, y) : 'x' and 'y' lengths differ
+  > points(x=c(3,4),y=c(1,5))
+  ```
+
+  参数设定
+
+  ```R
+  > points(x=c(3,4),cex=c(9,0.1),y=c(1,5))
+  					#cex指定点的大小，按顺序分配，不管你是不是塞在了中间
+  > points(x=c(2,4),lwd=c(9,0.1),y=c(0,4))
+  					#lwd指定点的厚度，按顺序分配
+  > points(x=c(3,4),col=c("red","blue"),y=c(1,5))
+  					#同样的，还有广泛使用的col指定颜色
+  #一段经典的代码
+  > points(x=c(2,4),lwd=c(9,0.1),y=c(0,4))
+  > plot(1:5, 1:5, xlim = c(0,6), ylim = c (0,6), type = "n")
+  > index <- 1:25
+  > start <- 0
+  > for (i in 1:5) {
+  + for (j in 1:5) {
+  + start <- start + 1
+  + points(x = i, y = j, pch = index[start], cex = 1.5)
+  + text(x = i, y = j, labels = index[start], pos = 3, offset = 1)
+  + }
+  + }
+  					#pch指定点的样式
+  > points(x=c(2,4),bg=c("red","cyan"),pch=c(22,25),y=c(0,4))
+  					#bg是填充，pch21~25才有，也可以先bg
+  ```
+
+
+* lines()和abline()
+  * lines在原图上直接加直线
+  * 不要打成line
+  * abline可以指定$y=ax+b$这样的函数形式
+  * abline可以画垂直坐标轴的直线，可以建立线性回归方程
+  * lines()输入的时候注意x,y又变回了横纵坐标
+* text()
+* mtext()
+* title()
+* legend()
